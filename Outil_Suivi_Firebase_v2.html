@@ -86,6 +86,7 @@ body{font-family:Arial,sans-serif;font-size:12px;color:#1a1a1a;background:#F4F6F
 .rkv{font-size:18px;font-weight:700}
 .rkl{font-size:9px;color:#6B7280;margin-top:1px}
 .bch{font-size:10px;padding:3px 8px;border-radius:5px;border:1px solid #D1D5DB;cursor:pointer;background:#fff;color:#6B7280}
+.breset{font-size:10px;font-weight:700;padding:3px 10px;border-radius:5px;border:1px solid #FCA5A5;cursor:pointer;background:#FEF2F2;color:#991B1B;margin-left:6px}
 </style>
 </head>
 <body>
@@ -152,7 +153,10 @@ body{font-family:Arial,sans-serif;font-size:12px;color:#1a1a1a;background:#F4F6F
     <div class="col">
       <div class="chdr">
         <div class="chtitle" id="mytitle">Mes actions</div>
-        <button class="bch" onclick="logout()">← Changer</button>
+        <div style="display:flex;gap:4px">
+          <span id="reset-btn" style="display:none"><button class="breset" onclick="resetAll()">⟳ Réinitialiser</button></span>
+          <button class="bch" onclick="logout()">← Changer</button>
+        </div>
       </div>
       <div class="rkpi">
         <div class="rk" style="background:#F0FDF4"><div class="rkv" style="color:#166534" id="mok">0</div><div class="rkl">Confirmées</div></div>
@@ -360,6 +364,23 @@ async function confirmAction(id){
   }catch(e){setSync("err","Erreur sync");}
 }
 
+async function resetAll(){
+  if(!confirm("Réinitialiser TOUS les statuts à zéro ? Cette action est irréversible.")) return;
+  setSync("load","Réinitialisation...");
+  try{
+    const init={};
+    ACTIONS.forEach(a=>{init[a.id]={st:"upcoming",by:"",ts:""};});
+    await fbPut("statuts",init);
+    statuts=init;
+    render();
+    setSync("ok","Réinitialisé à "+nowS());
+    alert("Tous les statuts ont été remis à zéro.");
+  }catch(e){
+    setSync("err","Erreur réinitialisation");
+    alert("Erreur : "+e.message);
+  }
+}
+
 async function syncFromFirebase(){
   try{
     await loadStatuts();
@@ -516,6 +537,8 @@ function enter(){
   const av=MB.find(m=>m.id===me.id);
   document.getElementById("mytitle").innerHTML=
     `<div style="width:20px;height:20px;border-radius:50%;background:${av.bg};color:${av.tc};display:inline-flex;align-items:center;justify-content:center;font-size:8px;font-weight:700;margin-right:5px">${av.in}</div>${av.name}`;
+  // Afficher le bouton reset uniquement pour Shamir
+  document.getElementById("reset-btn").style.display=me.id==="shamir"?"inline":"none";
   tick();render();
   syncInt=setInterval(syncFromFirebase,8000);
 }
