@@ -351,7 +351,7 @@ async function fbPatch(path,data){
 }
 
 // ── CONNEXION ─────────────────────────────────────────────────
-async function connect(){
+async async function connect(){
   const url=document.getElementById("fb-url").value.trim().replace(/\/$/,"");
   const key=document.getElementById("fb-key").value.trim();
   const err=document.getElementById("cfg-err");
