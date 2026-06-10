@@ -17,21 +17,21 @@ body{font-family:Arial,sans-serif;font-size:12px;color:#1a1a1a;background:#F4F6F
 .sdot{width:7px;height:7px;border-radius:50%;background:#6B7280;flex-shrink:0}
 .sdot.ok{background:#22C55E;animation:pulse 2s infinite}
 .sdot.err{background:#EF4444}
-.sdot.load{background:#F59E0B;animation:pulse 0.5s infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.3}}
-.cfg{padding:1.5rem 1rem;max-width:500px;margin:0 auto}
+/* CONFIG */
+.cfg{padding:1.5rem 1rem;max-width:540px;margin:0 auto}
 .cfg-title{font-size:15px;font-weight:700;color:#1B3A6B;margin-bottom:4px}
 .cfg-sub{font-size:12px;color:#6B7280;margin-bottom:1rem}
-.cfg-box{background:#fff;border:1px solid #E5E7EB;border-radius:10px;padding:14px;margin-bottom:10px}
-.cfg-label{font-size:11px;font-weight:700;color:#374151;margin-bottom:6px;display:flex;align-items:center;gap:6px}
-.cfg-step{width:20px;height:20px;border-radius:50%;background:#1B3A6B;color:#fff;font-size:10px;font-weight:700;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0}
-.cfg-input{width:100%;padding:8px 10px;border-radius:6px;border:1px solid #D1D5DB;font-size:11px;font-family:monospace;margin-top:4px}
-.cfg-hint{font-size:10px;color:#6B7280;margin-top:5px;line-height:1.4}
-.cfg-btn{margin-top:12px;padding:10px;border-radius:6px;border:none;background:#1B3A6B;color:#fff;font-size:12px;font-weight:700;cursor:pointer;width:100%}
+.cfg-box{background:#fff;border:1px solid #E5E7EB;border-radius:10px;padding:14px;margin-bottom:12px}
+.cfg-label{font-size:11px;font-weight:700;color:#374151;margin-bottom:6px;display:flex;align-items:center;gap:5px}
+.cfg-step{width:18px;height:18px;border-radius:50%;background:#1B3A6B;color:#fff;font-size:10px;font-weight:700;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0}
+.cfg-input{width:100%;padding:7px 10px;border-radius:6px;border:1px solid #D1D5DB;font-size:11px;font-family:monospace;margin-top:4px}
+.cfg-hint{font-size:10px;color:#6B7280;margin-top:4px}
+.cfg-btn{margin-top:10px;padding:8px 16px;border-radius:6px;border:none;background:#1B3A6B;color:#fff;font-size:12px;font-weight:700;cursor:pointer;width:100%}
 .cfg-btn:hover{background:#16325C}
-.cfg-err{background:#FEE2E2;border:1px solid #FCA5A5;border-radius:6px;padding:8px 10px;font-size:11px;color:#991B1B;margin-top:8px;display:none}
+/* LOGIN */
 .login{padding:1.5rem 1rem;max-width:460px;margin:0 auto;display:none}
-.ltitle{font-size:15px;font-weight:700;margin-bottom:4px;color:#1B3A6B}
+.ltitle{font-size:16px;font-weight:700;margin-bottom:4px;color:#1B3A6B}
 .lsub{font-size:12px;color:#6B7280;margin-bottom:1.2rem}
 .avs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:1rem}
 .av{border:1px solid #E5E7EB;border-radius:10px;padding:12px 6px;text-align:center;cursor:pointer;background:#fff}
@@ -42,6 +42,7 @@ body{font-family:Arial,sans-serif;font-size:12px;color:#1a1a1a;background:#F4F6F
 .avr{font-size:10px;color:#6B7280;margin-top:2px}
 .benter{width:100%;padding:10px;border-radius:8px;border:none;background:#1B3A6B;color:#fff;font-size:13px;font-weight:700;cursor:pointer}
 .benter:disabled{opacity:0.4;cursor:not-allowed}
+/* APP */
 .app{display:none}
 .tcol{display:grid;grid-template-columns:1fr 1fr;height:calc(100vh - 58px)}
 @media(max-width:640px){.tcol{grid-template-columns:1fr;height:auto}}
@@ -86,7 +87,6 @@ body{font-family:Arial,sans-serif;font-size:12px;color:#1a1a1a;background:#F4F6F
 .rkv{font-size:18px;font-weight:700}
 .rkl{font-size:9px;color:#6B7280;margin-top:1px}
 .bch{font-size:10px;padding:3px 8px;border-radius:5px;border:1px solid #D1D5DB;cursor:pointer;background:#fff;color:#6B7280}
-.breset{font-size:10px;font-weight:700;padding:3px 10px;border-radius:5px;border:1px solid #FCA5A5;cursor:pointer;background:#FEF2F2;color:#991B1B;margin-left:6px}
 </style>
 </head>
 <body>
@@ -94,7 +94,7 @@ body{font-family:Arial,sans-serif;font-size:12px;color:#1a1a1a;background:#F4F6F
 <div class="hdr">
   <div>
     <div class="htitle">Outil de suivi — Salon des Métiers du Pétrole et du Gaz 2026</div>
-    <div class="hsub">Gabon, oui tu peux &nbsp;•&nbsp; 13 juin 2026 &nbsp;•&nbsp; Temps réel Firebase REST</div>
+    <div class="hsub">Gabon, oui tu peux &nbsp;•&nbsp; 13 juin 2026 &nbsp;•&nbsp; Temps réel Firebase</div>
   </div>
   <div class="hright">
     <div class="sync"><div class="sdot" id="sdot"></div><span id="stxt" style="color:#9CA3AF;font-size:10px">Non connecté</span></div>
@@ -103,33 +103,45 @@ body{font-family:Arial,sans-serif;font-size:12px;color:#1a1a1a;background:#F4F6F
   </div>
 </div>
 
+<!-- ÉCRAN 1 : Configuration Firebase -->
 <div class="cfg" id="screen-cfg">
-  <div class="cfg-title">Configuration — une seule fois</div>
-  <div class="cfg-sub">Après connexion, envoyer ce fichier à toute l'équipe avec les mêmes informations pré-remplies</div>
+  <div class="cfg-title">Configuration Firebase</div>
+  <div class="cfg-sub">Une seule fois — ensuite envoyer ce lien à toute l'équipe</div>
 
   <div class="cfg-box">
-    <div class="cfg-label"><span class="cfg-step">1</span> URL de la base de données Firebase</div>
-    <input class="cfg-input" id="fb-url" type="text" placeholder="https://salon-metiers-petrole-default-rtdb.firebaseio.com" value=""/>
-    <div class="cfg-hint">Firebase Console → Realtime Database → URL en haut de la page</div>
+    <div class="cfg-label"><span class="cfg-step">1</span> Créer un projet Firebase</div>
+    <div class="cfg-hint">
+      Aller sur <strong>console.firebase.google.com</strong> → Nouveau projet → Nommer "Salon-Petrole-2026" → Continuer<br>
+      Puis : Realtime Database → Créer une base de données → Mode test → Activer
+    </div>
   </div>
 
   <div class="cfg-box">
-    <div class="cfg-label"><span class="cfg-step">2</span> Clé API Web</div>
-    <input class="cfg-input" id="fb-key" type="text" placeholder="AIzaSyB65ei9C4CtF0M57ZXTYKMazxNsAIK7b7I" value=""/>
-    <div class="cfg-hint">Firebase Console → ⚙️ Paramètres du projet → Général → Clé API Web</div>
+    <div class="cfg-label"><span class="cfg-step">2</span> Coller l'URL de la base de données</div>
+    <input class="cfg-input" id="fb-url" type="text"
+      placeholder="https://salon-petrole-2026-default-rtdb.firebaseio.com" />
+    <div class="cfg-hint">Dans Firebase Console → Realtime Database → copier l'URL en haut (commence par https://)</div>
   </div>
 
-  <button class="cfg-btn" onclick="connect()">Connecter →</button>
-  <div class="cfg-err" id="cfg-err"></div>
+  <div class="cfg-box">
+    <div class="cfg-label"><span class="cfg-step">3</span> Coller la clé API Firebase</div>
+    <input class="cfg-input" id="fb-key" type="text"
+      placeholder="AIzaSyXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" />
+    <div class="cfg-hint">Dans Firebase Console → Paramètres du projet (roue dentée) → Général → Clé API Web</div>
+  </div>
+
+  <button class="cfg-btn" onclick="saveConfig()">Connecter et initialiser les données →</button>
 </div>
 
+<!-- ÉCRAN 2 : Choix du rôle -->
 <div class="login" id="screen-login">
   <div class="ltitle">Bienvenue dans la Régie</div>
-  <div class="lsub">Choisissez votre rôle — vos actions à droite, l'événement complet à gauche</div>
+  <div class="lsub">Vos actions à droite — l'événement complet à gauche — synchronisé en temps réel</div>
   <div class="avs" id="avs"></div>
   <button class="benter" id="enterbtn" disabled onclick="enter()">Accéder au tableau de bord</button>
 </div>
 
+<!-- ÉCRAN 3 : Application -->
 <div class="app" id="screen-app">
   <div class="tcol">
     <div class="col cleft">
@@ -141,22 +153,19 @@ body{font-family:Arial,sans-serif;font-size:12px;color:#1a1a1a;background:#F4F6F
       <div class="pmeta"><span id="pmeta">—</span><span id="pnext" style="color:#E8700A;font-weight:700">—</span></div>
       <div class="krow">
         <div class="kpi"><div class="kv" style="color:#1B3A6B" id="gtot">0</div><div class="kl">Total</div></div>
-        <div class="kpi"><div class="kv" style="color:#166534" id="gok">0</div><div class="kl">OK</div></div>
+        <div class="kpi"><div class="kv" style="color:#166634" id="gok">0</div><div class="kl">OK</div></div>
         <div class="kpi"><div class="kv" style="color:#854D0E" id="gpend">0</div><div class="kl">En attente</div></div>
         <div class="kpi"><div class="kv" style="color:#DC2626" id="glate">0</div><div class="kl">Retards</div></div>
       </div>
       <div class="chips" id="chips"></div>
       <div class="abar" id="abar">⚠ <span id="atxt"></span></div>
-      <div class="nbar"><span style="color:#6B7280">Prochain :</span> <strong id="nxt2" style="color:#1B3A6B;font-size:10px">—</strong></div>
+      <div class="nbar"><span style="color:#6B7280">Prochain signal :</span> <strong id="nxt2" style="color:#1B3A6B;font-size:10px">—</strong></div>
       <div class="feed" id="feedg"></div>
     </div>
     <div class="col">
       <div class="chdr">
         <div class="chtitle" id="mytitle">Mes actions</div>
-        <div style="display:flex;gap:4px">
-          <span id="reset-btn" style="display:none"><button class="breset" onclick="resetAll()">⟳ Réinitialiser</button></span>
-          <button class="bch" onclick="logout()">← Changer</button>
-        </div>
+        <button class="bch" onclick="logout()">← Changer</button>
       </div>
       <div class="rkpi">
         <div class="rk" style="background:#F0FDF4"><div class="rkv" style="color:#166534" id="mok">0</div><div class="rkl">Confirmées</div></div>
@@ -168,8 +177,12 @@ body{font-family:Arial,sans-serif;font-size:12px;color:#1a1a1a;background:#F4F6F
   </div>
 </div>
 
+<!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+
 <script>
-// ── DONNÉES STATIQUES ────────────────────────────────────────
+// ── DONNÉES DU CONDUCTEUR (statiques — ne changent pas) ───────
 const ACTIONS=[
   // ── 08:00 — ARRIVÉE DE L'ÉQUIPE ──────────────────────────
   {id:0, t:"08:00",s:"08:00 — Mobilisation équipe",d:"Guy",   a:"Arrivée et installation — Guy Kassa Koumba (coordinateur général)"},
@@ -304,12 +317,12 @@ const MB=[
   {id:"raissa",name:"Raissa",role:"Supervision participants", bg:"#F3E8FF",tc:"#6B21A8",in:"RA"},
   {id:"shamir",name:"Shamir",role:"Régisseur",               bg:"#FEF3E7",tc:"#92400E",in:"SH"},
 ];
-const DC={Agnes:"#9D174D",Charly:"#166534",Claude:"#1E40AF",Guy:"#D97706",Raissa:"#6B21A8",Shamir:"#92400E","DG Contenu Local":"#1B3A6B","Facilitateur A":"#0369A1","Facilitateur B":"#0369A1","Facilitateur C":"#0369A1","Facilitateur D":"#0369A1","Panéliste(s) Stage":"#374151","Panéliste(s) Orientation":"#374151","Panéliste(s) Bourses":"#374151"};
+const DC={Agnes:"#9D174D",Charly:"#166534",Claude:"#1E40AF",Guy:"#D97706",Raissa:"#6B21A8",Shamir:"#92400E"};
 
 // ── ÉTAT ──────────────────────────────────────────────────────
-let me=null,auto=false,ck=null,syncInt=null;
-let FB_URL="",FB_KEY="";
-let statuts={};
+let me=null, db=null, ck=null, auto=false;
+// Statuts en mémoire — mis à jour en temps réel par Firebase
+let statuts = {}; // {id: {st, by, ts}}
 
 function toM(t){const[h,m]=t.split(":").map(Number);return h*60+m;}
 function nowM(){const n=new Date();return n.getHours()*60+n.getMinutes();}
@@ -319,128 +332,84 @@ function tick(){document.getElementById("clk").textContent=nowS();}
 function setSync(cls,txt){
   document.getElementById("sdot").className="sdot "+cls;
   document.getElementById("stxt").textContent=txt;
-  document.getElementById("stxt").style.color=cls==="ok"?"#22C55E":cls==="err"?"#EF4444":"#F59E0B";
+  document.getElementById("stxt").style.color=
+    cls==="ok"?"#22C55E":cls==="err"?"#EF4444":"#9CA3AF";
 }
 
-// ── FIREBASE REST API ─────────────────────────────────────────
-// Utilise l'API REST Firebase — pas de SDK, pas de problème de domaine
-async function fbGet(path){
-  const res=await fetch(`${FB_URL}/${path}.json`);
-  if(!res.ok) throw new Error("HTTP "+res.status);
-  return res.json();
+// ── CONFIG FIREBASE ───────────────────────────────────────────
+function saveConfig(){
+  const url = document.getElementById("fb-url").value.trim();
+  const key = document.getElementById("fb-key").value.trim();
+  if(!url || !key){alert("Veuillez remplir l'URL et la clé API.");return;}
+  localStorage.setItem("fb_url", url);
+  localStorage.setItem("fb_key", key);
+  initFirebase(url, key);
 }
 
-async function fbPut(path,data){
-  const res=await fetch(`${FB_URL}/${path}.json`,{
-    method:"PUT",
-    headers:{"Content-Type":"application/json"},
-    body:JSON.stringify(data)
-  });
-  if(!res.ok) throw new Error("HTTP "+res.status);
-  return res.json();
-}
-
-async function fbPatch(path,data){
-  const res=await fetch(`${FB_URL}/${path}.json`,{
-    method:"PATCH",
-    headers:{"Content-Type":"application/json"},
-    body:JSON.stringify(data)
-  });
-  if(!res.ok) throw new Error("HTTP "+res.status);
-  return res.json();
-}
-
-// ── CONNEXION ─────────────────────────────────────────────────
-async async function connect(){
-  const url=document.getElementById("fb-url").value.trim().replace(/\/$/,"");
-  const key=document.getElementById("fb-key").value.trim();
-  const err=document.getElementById("cfg-err");
-  err.style.display="none";
-
-  if(!url||!key){err.textContent="Veuillez remplir les deux champs.";err.style.display="block";return;}
-
-  FB_URL=url; FB_KEY=key;
-  setSync("load","Connexion...");
-
+function initFirebase(url, key){
   try{
-    // Test de connexion simple
-    const test=await fbGet("statuts/0");
-    
-    if(test===null){
-      // Première utilisation — initialiser les données
-      setSync("load","Initialisation...");
-      const init={};
-      ACTIONS.forEach(a=>{init[a.id]={st:"upcoming",by:"",ts:""};});
-      await fbPut("statuts",init);
-    }
+    if(firebase.apps.length) firebase.app().delete();
+    firebase.initializeApp({databaseURL: url, apiKey: key});
+    db = firebase.database();
 
-    // Charger les statuts
-    await loadStatuts();
-    
-    // Sauvegarder la config
-    localStorage.setItem("fb_url",url);
-    localStorage.setItem("fb_key",key);
-    
-    setSync("ok","Connecté");
-    document.getElementById("screen-cfg").style.display="none";
-    document.getElementById("screen-login").style.display="block";
+    // Tester la connexion
+    db.ref(".info/connected").on("value", snap => {
+      if(snap.val()){
+        setSync("ok","Connecté");
+        // Pousser les données initiales si vides
+        db.ref("statuts").once("value").then(s=>{
+          if(!s.exists()){
+            const init={};
+            ACTIONS.forEach(a=>{ init[a.id]={st:"upcoming",by:"",ts:""}; });
+            db.ref("statuts").set(init);
+          }
+          showLogin();
+        });
+      } else {
+        setSync("err","Déconnecté");
+      }
+    });
+
+    // Écouter les changements en temps réel
+    db.ref("statuts").on("value", snap => {
+      if(snap.exists()){
+        statuts = snap.val();
+        autoStatus();
+        if(me) render();
+        setSync("ok","Sync "+nowS());
+      }
+    });
 
   }catch(e){
+    alert("Erreur Firebase : "+e.message);
     setSync("err","Erreur");
-    err.textContent="Impossible de se connecter : "+e.message+". Vérifiez l'URL et la clé API.";
-    err.style.display="block";
   }
 }
 
-async function loadStatuts(){
-  const data=await fbGet("statuts");
-  if(data) statuts=data;
-  autoStatus();
-  if(me) render();
+function showLogin(){
+  document.getElementById("screen-cfg").style.display="none";
+  document.getElementById("screen-login").style.display="block";
 }
 
-async function confirmAction(id){
-  if(!me)return;
-  const update={st:"confirmed",by:me.name,ts:nowS()};
-  statuts[id]=update;
-  render();
-  // Écrire dans Firebase en arrière-plan
-  try{
-    await fbPatch("statuts/"+id,update);
-    setSync("ok","Sync "+nowS());
-  }catch(e){setSync("err","Erreur sync");}
+// ── CONFIRMATION — écriture Firebase instantanée ──────────────
+function confirmAction(id){
+  if(!db || !me) return;
+  const ref = db.ref("statuts/"+id);
+  ref.set({st:"confirmed", by:me.name, ts:nowS()});
+  // Firebase met à jour tous les clients en < 100ms
 }
 
-async function resetAll(){
-  if(!confirm("Réinitialiser TOUS les statuts à zéro ? Cette action est irréversible.")) return;
-  setSync("load","Réinitialisation...");
-  try{
-    const init={};
-    ACTIONS.forEach(a=>{init[a.id]={st:"upcoming",by:"",ts:""};});
-    await fbPut("statuts",init);
-    statuts=init;
-    render();
-    setSync("ok","Réinitialisé à "+nowS());
-    alert("Tous les statuts ont été remis à zéro.");
-  }catch(e){
-    setSync("err","Erreur réinitialisation");
-    alert("Erreur : "+e.message);
-  }
-}
-
-async function syncFromFirebase(){
-  try{
-    await loadStatuts();
-    setSync("ok","Sync "+nowS());
-  }catch(e){setSync("err","Erreur");}
-}
-
+// ── STATUT AUTO (pending/late selon heure) ────────────────────
 function autoStatus(){
   const now=nowM();
   ACTIONS.forEach(a=>{
-    const s=statuts[a.id]||{st:"upcoming"};
-    if(s.st==="upcoming"&&toM(a.t)<=now) statuts[a.id]={...s,st:"pending"};
-    if(s.st==="pending"&&toM(a.t)<now-2) statuts[a.id]={...s,st:"late"};
+    const s = statuts[a.id] || {st:"upcoming"};
+    if(s.st==="upcoming" && toM(a.t)<=now){
+      db && db.ref("statuts/"+a.id+"/st").set("pending");
+    }
+    if(s.st==="pending" && toM(a.t)<now-2){
+      db && db.ref("statuts/"+a.id+"/st").set("late");
+    }
   });
 }
 
@@ -449,12 +418,11 @@ function toggleAuto(){
   const btn=document.getElementById("gobtn");
   if(auto){
     btn.textContent="⏸ Pause";btn.style.background="#DC2626";
-    if(!ck)ck=setInterval(()=>{tick();autoStatus();render();},30000);
-    if(!syncInt)syncInt=setInterval(syncFromFirebase,8000);
-    tick();autoStatus();render();
+    if(!ck)ck=setInterval(()=>{tick();autoStatus();},30000);
+    tick();autoStatus();
   }else{
     btn.textContent="▶ Démarrer";btn.style.background="#E8700A";
-    clearInterval(ck);clearInterval(syncInt);ck=null;syncInt=null;
+    clearInterval(ck);ck=null;
   }
 }
 
@@ -463,19 +431,27 @@ function isMine(a){
   if(!me)return false;
   return a.d===me.name||(me.id==="agnes"&&a.d==="Agnès");
 }
-function getSt(a){return(statuts[a.id]||{st:"upcoming"}).st;}
-function getBy(a){return(statuts[a.id]||{by:""}).by||"";}
 
-function stok(a){
-  const st=getSt(a),by=getBy(a);
-  if(st==="confirmed")return`<span class="stk tok-ok">✓ OK${by?" — "+by:""}</span>`;
-  if(st==="late")return'<span class="stk tok-l">⚠ Retard</span>';
-  if(st==="pending")return'<span class="stk tok-p">⏳ En attente</span>';
-  return'<span class="stk tok-u">○ À venir</span>';
+function getSt(a){
+  const s=statuts[a.id];
+  return s?s.st:"upcoming";
 }
 
-function buildCard(a,compact,canConf){
-  const now=nowM(),st=getSt(a);
+function getBy(a){
+  const s=statuts[a.id];
+  return s&&s.by?s.by:"";
+}
+
+function stok(a){
+  const st=getSt(a), by=getBy(a);
+  if(st==="confirmed")return `<span class="stk tok-ok">✓ OK${by?" — "+by:""}</span>`;
+  if(st==="late")     return '<span class="stk tok-l">⚠ Retard</span>';
+  if(st==="pending")  return '<span class="stk tok-p">⏳ En attente</span>';
+  return '<span class="stk tok-u">○ À venir</span>';
+}
+
+function buildCard(a, compact, canConf){
+  const now=nowM(), st=getSt(a);
   const isCur=toM(a.t)<=now+2&&toM(a.t)>=now-1&&st!=="confirmed";
   const mine=isMine(a);
   let cls="sig"+(mine&&!compact?" mine":"");
@@ -502,12 +478,13 @@ function buildCard(a,compact,canConf){
 }
 
 function render(){
-  if(!me)return;
+  if(!me) return;
   const now=nowM();
   const conf=ACTIONS.filter(a=>getSt(a)==="confirmed").length;
   const pend=ACTIONS.filter(a=>getSt(a)==="pending").length;
   const late=ACTIONS.filter(a=>getSt(a)==="late").length;
   const tot=ACTIONS.length;
+
   document.getElementById("gtot").textContent=tot;
   document.getElementById("gok").textContent=conf;
   document.getElementById("gpend").textContent=pend;
@@ -515,10 +492,12 @@ function render(){
   document.getElementById("pfill").style.width=Math.round(conf/tot*100)+"%";
   document.getElementById("plbl").textContent=Math.round(conf/tot*100)+"% complété";
   document.getElementById("pmeta").textContent=conf+"/"+tot+" confirmés";
+
   const nx=ACTIONS.find(a=>getSt(a)==="upcoming"&&toM(a.t)>=now);
   document.getElementById("pnext").textContent=nx?"→ "+nx.t+" "+nx.d:"Tout traité";
   document.getElementById("nxt2").textContent=nx?nx.t+" — "+nx.a.substring(0,45)+"...":"Tout traité ✓";
 
+  // Chips équipe
   const byD={};
   ACTIONS.forEach(a=>{
     if(!byD[a.d])byD[a.d]={ok:0,tot:0,late:0,pend:0};
@@ -528,7 +507,7 @@ function render(){
     else if(st==="late")byD[a.d].late++;
     else if(st==="pending")byD[a.d].pend++;
   });
-  const mains=["Charly","Agnès","Guy","Claude","Raissa","Shamir","Facilitateur A","Facilitateur B","Facilitateur C","Facilitateur D"];
+  const mains=["Charly","Agnès","Guy","Claude","Raissa","Shamir"];
   document.getElementById("chips").innerHTML=mains.filter(k=>byD[k]).map(k=>{
     const v=byD[k];
     const col=v.late>0?"#991B1B":v.pend>0?"#854D0E":v.ok===v.tot?"#166534":"#6B7280";
@@ -537,15 +516,19 @@ function render(){
   }).join("");
 
   const al=document.getElementById("abar");
-  if(late>0||pend>0){al.style.display="block";document.getElementById("atxt").textContent=(late>0?late+" retard(s) — ":"")+(pend>0?pend+" en attente":"");}
-  else{al.style.display="none";}
+  if(late>0||pend>0){
+    al.style.display="block";
+    document.getElementById("atxt").textContent=
+      (late>0?late+" retard(s) — ":"")+(pend>0?pend+" en attente":"");
+  }else{al.style.display="none";}
 
   const mySigs=ACTIONS.filter(a=>isMine(a));
   const mOk=mySigs.filter(a=>getSt(a)==="confirmed").length;
   document.getElementById("mok").textContent=mOk;
   document.getElementById("mpend").textContent=mySigs.length-mOk;
   const mnx=mySigs.find(a=>getSt(a)!=="confirmed"&&toM(a.t)>=now);
-  document.getElementById("mnext").textContent=mnx?mnx.t+" — "+mnx.a.substring(0,42)+"...":"Tout confirmé ✓";
+  document.getElementById("mnext").textContent=
+    mnx?mnx.t+" — "+mnx.a.substring(0,42)+"...":"Tout confirmé ✓";
 
   let gH="",mH="",lgS="",lmS="";
   ACTIONS.forEach(a=>{
@@ -557,7 +540,8 @@ function render(){
     mH+=buildCard(a,false,true);
   });
   document.getElementById("feedg").innerHTML=gH;
-  document.getElementById("feedm").innerHTML=mH||'<div style="color:#6B7280;text-align:center;padding:20px;font-size:11px">Aucune action pour ce rôle</div>';
+  document.getElementById("feedm").innerHTML=mH||
+    '<div style="color:#6B7280;text-align:center;padding:20px;font-size:11px">Aucune action pour ce rôle</div>';
 }
 
 // ── LOGIN ─────────────────────────────────────────────────────
@@ -584,32 +568,27 @@ function enter(){
   const av=MB.find(m=>m.id===me.id);
   document.getElementById("mytitle").innerHTML=
     `<div style="width:20px;height:20px;border-radius:50%;background:${av.bg};color:${av.tc};display:inline-flex;align-items:center;justify-content:center;font-size:8px;font-weight:700;margin-right:5px">${av.in}</div>${av.name}`;
-  // Afficher le bouton reset uniquement pour Shamir
-  document.getElementById("reset-btn").style.display=me.id==="shamir"?"inline":"none";
   tick();render();
-  syncInt=setInterval(syncFromFirebase,8000);
 }
 
 function logout(){
-  me=null;clearInterval(ck);clearInterval(syncInt);ck=null;syncInt=null;auto=false;
+  me=null;
   document.getElementById("screen-login").style.display="block";
   document.getElementById("screen-app").style.display="none";
-  document.getElementById("gobtn").textContent="▶ Démarrer";
-  document.getElementById("gobtn").style.background="#E8700A";
 }
 
 // ── DÉMARRAGE ─────────────────────────────────────────────────
-buildLogin();tick();setInterval(tick,1000);
+buildLogin();
+tick();setInterval(tick,1000);
 
-// Charger config sauvegardée
-const savedUrl=localStorage.getItem("fb_url");
-const savedKey=localStorage.getItem("fb_key");
-if(savedUrl&&savedKey){
+// Charger config Firebase si déjà enregistrée
+const savedUrl = localStorage.getItem("fb_url");
+const savedKey = localStorage.getItem("fb_key");
+if(savedUrl && savedKey){
   document.getElementById("fb-url").value=savedUrl;
   document.getElementById("fb-key").value=savedKey;
-  FB_URL=savedUrl;FB_KEY=savedKey;
+  initFirebase(savedUrl, savedKey);
 }
-
 </script>
 </body>
 </html>
