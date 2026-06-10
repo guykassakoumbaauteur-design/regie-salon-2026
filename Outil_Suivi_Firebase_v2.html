@@ -109,13 +109,13 @@ body{font-family:Arial,sans-serif;font-size:12px;color:#1a1a1a;background:#F4F6F
 
   <div class="cfg-box">
     <div class="cfg-label"><span class="cfg-step">1</span> URL de la base de données Firebase</div>
-    <input class="cfg-input" id="fb-url" type="text" placeholder="https://salon-metiers-petrole-default-rtdb.firebaseio.com" value="https://salon-metiers-petrole-default-rtdb.firebaseio.com"/>
+    <input class="cfg-input" id="fb-url" type="text" placeholder="https://salon-metiers-petrole-default-rtdb.firebaseio.com" value=""/>
     <div class="cfg-hint">Firebase Console → Realtime Database → URL en haut de la page</div>
   </div>
 
   <div class="cfg-box">
     <div class="cfg-label"><span class="cfg-step">2</span> Clé API Web</div>
-    <input class="cfg-input" id="fb-key" type="text" placeholder="AIzaSyB65ei9C4CtF0M57ZXTYKMazxNsAIK7b7I" value="AIzaSyB65ei9C4CtF0M57ZXTYKMazxNsAIK7b7I"/>
+    <input class="cfg-input" id="fb-key" type="text" placeholder="AIzaSyB65ei9C4CtF0M57ZXTYKMazxNsAIK7b7I" value=""/>
     <div class="cfg-hint">Firebase Console → ⚙️ Paramètres du projet → Général → Clé API Web</div>
   </div>
 
@@ -325,13 +325,13 @@ function setSync(cls,txt){
 // ── FIREBASE REST API ─────────────────────────────────────────
 // Utilise l'API REST Firebase — pas de SDK, pas de problème de domaine
 async function fbGet(path){
-  const res=await fetch(`${FB_URL}/${path}.json?auth=${FB_KEY}`);
+  const res=await fetch(`${FB_URL}/${path}.json`);
   if(!res.ok) throw new Error("HTTP "+res.status);
   return res.json();
 }
 
 async function fbPut(path,data){
-  const res=await fetch(`${FB_URL}/${path}.json?auth=${FB_KEY}`,{
+  const res=await fetch(`${FB_URL}/${path}.json`,{
     method:"PUT",
     headers:{"Content-Type":"application/json"},
     body:JSON.stringify(data)
@@ -341,7 +341,7 @@ async function fbPut(path,data){
 }
 
 async function fbPatch(path,data){
-  const res=await fetch(`${FB_URL}/${path}.json?auth=${FB_KEY}`,{
+  const res=await fetch(`${FB_URL}/${path}.json`,{
     method:"PATCH",
     headers:{"Content-Type":"application/json"},
     body:JSON.stringify(data)
@@ -609,6 +609,7 @@ if(savedUrl&&savedKey){
   document.getElementById("fb-key").value=savedKey;
   FB_URL=savedUrl;FB_KEY=savedKey;
 }
+
 </script>
 </body>
 </html>
