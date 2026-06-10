@@ -109,13 +109,13 @@ body{font-family:Arial,sans-serif;font-size:12px;color:#1a1a1a;background:#F4F6F
 
   <div class="cfg-box">
     <div class="cfg-label"><span class="cfg-step">1</span> URL de la base de données Firebase</div>
-    <input class="cfg-input" id="fb-url" type="text" placeholder="https://salon-petrole-2026-default-rtdb.firebaseio.com"/>
+    <input class="cfg-input" id="fb-url" type="text" placeholder="https://salon-metiers-petrole-default-rtdb.firebaseio.com" value="https://salon-metiers-petrole-default-rtdb.firebaseio.com"/>
     <div class="cfg-hint">Firebase Console → Realtime Database → URL en haut de la page</div>
   </div>
 
   <div class="cfg-box">
     <div class="cfg-label"><span class="cfg-step">2</span> Clé API Web</div>
-    <input class="cfg-input" id="fb-key" type="text" placeholder="AIzaSy..."/>
+    <input class="cfg-input" id="fb-key" type="text" placeholder="AIzaSyB65ei9C4CtF0M57ZXTYKMazxNsAIK7b7I" value="AIzaSyB65ei9C4CtF0M57ZXTYKMazxNsAIK7b7I"/>
     <div class="cfg-hint">Firebase Console → ⚙️ Paramètres du projet → Général → Clé API Web</div>
   </div>
 
@@ -171,82 +171,129 @@ body{font-family:Arial,sans-serif;font-size:12px;color:#1a1a1a;background:#F4F6F
 <script>
 // ── DONNÉES STATIQUES ────────────────────────────────────────
 const ACTIONS=[
-  {id:0,t:"08:30",s:"Pré-événement",d:"Charly",a:"Création et configuration de toutes les salles Zoom"},
-  {id:1,t:"08:40",s:"Pré-événement",d:"Charly",a:"Configuration YouTube Live — lier Zoom à la chaîne YouTube"},
-  {id:2,t:"08:45",s:"Pré-événement",d:"Charly",a:"Test Salle VIP — vérifier accès et paramètres"},
-  {id:3,t:"08:55",s:"Pré-événement",d:"Charly",a:"Test Salle Support technique"},
-  {id:4,t:"09:00",s:"Accueil",d:"Charly",a:"Affichage écran Zoom — positionnement programme (ACCUEIL)"},
-  {id:5,t:"09:00",s:"Accueil",d:"Charly",a:"Ouverture salle principale + Salle H"},
-  {id:6,t:"09:00",s:"Accueil",d:"Charly",a:"Affichage écran Zoom — message d'accueil général"},
-  {id:7,t:"09:00",s:"Accueil",d:"Charly",a:"Affichage écran Zoom — consignes techniques"},
-  {id:8,t:"09:00",s:"Accueil",d:"Charly",a:"Ouverture Salle VIP"},
-  {id:9,t:"09:00",s:"Accueil",d:"Charly",a:"Lancement stream YouTube Live — mode test"},
-  {id:10,t:"09:00",s:"Accueil",d:"Guy",a:"Accueil des premiers panélistes en Salle VIP"},
-  {id:11,t:"09:05",s:"Accueil",d:"Charly",a:"Vérification audio/vidéo équipe centrale"},
-  {id:12,t:"09:20",s:"Accueil",d:"Charly",a:"Affichage écran Zoom — programme du salon"},
-  {id:13,t:"09:20",s:"Accueil",d:"Charly",a:"Affichage écran Zoom — VIP confirmés"},
-  {id:14,t:"09:20",s:"Accueil",d:"Charly",a:"Affichage écran Zoom — compte à rebours (40 min)"},
-  {id:15,t:"09:20",s:"Accueil",d:"Guy",a:"Check-in panélistes en Salle VIP — accueil"},
-  {id:16,t:"09:20",s:"Accueil",d:"Charly",a:"Check-in panélistes en Salle VIP — test connexion Zoom"},
-  {id:17,t:"09:30",s:"Accueil",d:"Guy",a:"Briefing final équipe centrale"},
-  {id:18,t:"09:40",s:"Accueil",d:"Charly",a:"Rappel écran Zoom — 20 min avant le début"},
-  {id:19,t:"09:40",s:"Accueil",d:"Guy",a:"Accompagnement panélistes A-D : VIP → salles thématiques"},
-  {id:20,t:"09:40",s:"Accueil",d:"Charly",a:"Migration Zoom panélistes A-D : VIP → salles thématiques"},
-  {id:21,t:"09:45",s:"Accueil",d:"Raissa",a:"Vérification présence superviseurs géographiques"},
-  {id:22,t:"09:55",s:"Accueil",d:"Charly",a:"Migration Zoom — tous les intervenants VIP → salle principale"},
-  {id:23,t:"09:55",s:"Accueil",d:"Guy",a:"Accompagnement intervenants VIP → salle principale"},
-  {id:24,t:"09:55",s:"Accueil",d:"Charly",a:"Rappel écran Zoom — 5 min avant le début"},
-  {id:25,t:"09:55",s:"Accueil",d:"Shamir",a:"Vérification globale — tout est prêt pour le démarrage"},
-  {id:26,t:"10:00",s:"Partie 1",d:"Charly",a:"Affichage écran Zoom — positionnement programme (Partie 1)"},
-  {id:27,t:"10:00",s:"Partie 1",d:"Charly",a:"Passage YouTube Live en mode PUBLIC"},
-  {id:28,t:"10:00",s:"Partie 1",d:"Charly",a:"Migration Zoom intervenants P1 : VIP → salle principale"},
-  {id:29,t:"10:00",s:"Partie 1",d:"Guy",a:"Accompagnement intervenants P1 : VIP → salle principale"},
-  {id:30,t:"10:05",s:"Partie 1",d:"Agnès",a:"Mot de bienvenue"},
-  {id:31,t:"10:12",s:"Partie 1",d:"Charly",a:"Affichage écran Zoom — photo intervenant officiel (Ministre)"},
-  {id:32,t:"10:17",s:"Partie 1",d:"Guy",a:"Retour Salle VIP — intervenant officiel (après intervention)"},
-  {id:33,t:"10:15",s:"Partie 1",d:"Charly",a:"Affichage écran Zoom — photo et titre de M. Viannet Okouma"},
-  {id:34,t:"10:27",s:"Partie 1",d:"Guy",a:"Retour Salle VIP — Okouma (après intervention)"},
-  {id:35,t:"10:27",s:"Partie 1",d:"Agnès",a:"Annonce de la suite — présentation des 4 salles et panélistes"},
-  {id:36,t:"10:27",s:"Partie 1",d:"Charly",a:"Affichage écran Zoom — 4 salles thématiques avec panélistes"},
-  {id:37,t:"10:35",s:"Partie 1",d:"Guy",a:"Accompagnement panélistes A-D : VIP → salles (10 min avant)"},
-  {id:38,t:"10:35",s:"Partie 1",d:"Charly",a:"Migration Zoom panélistes A-D : VIP → salles (10 min avant)"},
-  {id:39,t:"10:35",s:"Partie 1",d:"Agnès",a:"Instructions logistiques & navigation vers salles A-D"},
-  {id:40,t:"10:50",s:"Partie 2",d:"Charly",a:"Affichage écran Zoom — positionnement programme (Partie 2)"},
-  {id:41,t:"10:50",s:"Partie 2",d:"Agnès",a:"Lancement simultané salles A, B, C, D"},
-  {id:42,t:"10:50",s:"Partie 2",d:"Charly",a:"Message écran Zoom — sessions en cours, retour à 12h30"},
-  {id:43,t:"11:50",s:"Partie 2",d:"Agnès",a:"Point mi-parcours — état salles A-D"},
-  {id:44,t:"12:10",s:"Partie 2",d:"Agnès",a:"Signal fin sessions — clôture Q&A salles A-D dans 10 min"},
-  {id:45,t:"12:20",s:"Transition 2-3",d:"Shamir",a:"Vérification — tous les intervenants P3 en salle principale"},
-  {id:46,t:"12:20",s:"Transition 2-3",d:"Guy",a:"Accompagnement panélistes P3 : VIP → salle principale"},
-  {id:47,t:"12:20",s:"Transition 2-3",d:"Charly",a:"Migration Zoom panélistes P3 : VIP → salle principale"},
-  {id:48,t:"12:25",s:"Transition 2-3",d:"Charly",a:"Fermeture salles A-D — activation salle principale"},
-  {id:49,t:"12:25",s:"Partie 3",d:"Charly",a:"Affichage écran Zoom — positionnement programme (Partie 3)"},
-  {id:50,t:"12:25",s:"Partie 3",d:"Charly",a:"Affichage écran Zoom — programme de la Partie 3"},
-  {id:51,t:"12:25",s:"Partie 3",d:"Charly",a:"Affichage écran Zoom — panélistes et facilitateurs P3"},
-  {id:52,t:"12:30",s:"Partie 3",d:"Claude",a:"Claude prend le rôle de Host — introduction et objectifs P3"},
-  {id:53,t:"12:45",s:"Partie 3",d:"Claude",a:"Q&A Séquence 1 — Stage (5 min)"},
-  {id:54,t:"13:00",s:"Partie 3",d:"Claude",a:"Q&A Séquence 2 — Conseil d'orientation (5 min)"},
-  {id:55,t:"13:15",s:"Partie 3",d:"Claude",a:"Q&A Séquence 3 — Bourses (5 min)"},
-  {id:56,t:"13:20",s:"Partie 3",d:"Claude",a:"Présentation programme mentoring, coaching et support"},
-  {id:57,t:"13:28",s:"Partie 3",d:"Claude",a:"Claude remercie les panélistes P3 et repasse la main à Agnès"},
-  {id:58,t:"13:28",s:"Partie 3",d:"Agnès",a:"Agnès reprend le rôle de Host pour la clôture"},
-  {id:59,t:"13:30",s:"Partie 3",d:"Guy",a:"Retour Salle VIP — panélistes P3 (après intervention)"},
-  {id:60,t:"13:30",s:"Partie 3",d:"Charly",a:"Migration Zoom — panélistes P3 vers Salle VIP"},
-  {id:61,t:"13:40",s:"Partie 4",d:"Charly",a:"Affichage écran Zoom — positionnement programme (Partie 4)"},
-  {id:62,t:"13:40",s:"Partie 4",d:"Agnès",a:"Annonce de la partie finale du salon"},
-  {id:63,t:"13:42",s:"Partie 4",d:"Charly",a:"Affichage écran Zoom — portrait de Guy Kassa Koumba"},
-  {id:64,t:"13:42",s:"Partie 4",d:"Guy",a:"Bilan de la journée et conseils"},
-  {id:65,t:"13:42",s:"Partie 4",d:"Agnès",a:"Vérification présence DG en Salle VIP (pendant bilan Guy)"},
-  {id:66,t:"13:50",s:"Partie 4",d:"Agnès",a:"Accompagnement DG Contenu Local : Salle VIP → salle principale"},
-  {id:67,t:"13:50",s:"Partie 4",d:"Charly",a:"Migration Zoom DG Contenu Local : VIP → salle principale"},
-  {id:68,t:"13:57",s:"Partie 4",d:"Guy",a:"Accompagnement DG : salle principale → Salle VIP (au revoir)"},
-  {id:69,t:"13:57",s:"Partie 4",d:"Agnès",a:"Mots de la fin"},
-  {id:70,t:"13:57",s:"Partie 4",d:"Charly",a:"Diffusion écran Zoom — vidéo défilé des noms des organisateurs"},
-  {id:71,t:"13:55",s:"Fermeture",d:"Raissa",a:"Suivi final des participants"},
-  {id:72,t:"14:00",s:"Fermeture",d:"Charly",a:"Arrêt stream YouTube + message de fin"},
-  {id:73,t:"14:00",s:"Fermeture",d:"Charly",a:"Fermeture technique toutes les salles Zoom"},
-  {id:74,t:"14:05",s:"Fermeture",d:"Shamir",a:"Transmission du conducteur complété à Guy"},
-  {id:75,t:"14:05",s:"Fermeture",d:"Guy",a:"Debriefing équipe centrale"},
+  // ── 08:00 — ARRIVÉE DE L'ÉQUIPE ──────────────────────────
+  {id:0, t:"08:00",s:"08:00 — Mobilisation équipe",d:"Guy",   a:"Arrivée et installation — Guy Kassa Koumba (coordinateur général)"},
+  {id:1, t:"08:00",s:"08:00 — Mobilisation équipe",d:"Charly",a:"Arrivée et installation — Charly (support technique)"},
+  {id:2, t:"08:00",s:"08:00 — Mobilisation équipe",d:"Agnès", a:"Arrivée et installation — Agnès Pangou (host principale)"},
+  {id:3, t:"08:00",s:"08:00 — Mobilisation équipe",d:"Claude",a:"Arrivée et installation — Claude (co-host / animateur P3)"},
+  {id:4, t:"08:00",s:"08:00 — Mobilisation équipe",d:"Shamir",a:"Arrivée et installation — Shamir (régisseur)"},
+  {id:5, t:"08:00",s:"08:00 — Mobilisation équipe",d:"Raissa",a:"Arrivée et installation — Raissa (supervision participants)"},
+  {id:6, t:"08:00",s:"08:00 — Mobilisation équipe",d:"Charly",a:"Vérification matériel technique — ordinateurs, connexions, équipements"},
+  {id:7, t:"08:05",s:"08:00 — Mobilisation équipe",d:"Guy",   a:"Briefing d'ouverture — rappel des rôles, du déroulé et des consignes du jour"},
+  // ── 08:10–08:30 — PRÉ-ÉVÉNEMENT TECHNIQUE (Charly) ───────
+  {id:8, t:"08:10",s:"08:10 — Pré-événement",d:"Charly",a:"Création et configuration de toutes les salles Zoom (principale, VIP, H, A, B, C, D, Support)"},
+  {id:9, t:"08:15",s:"08:10 — Pré-événement",d:"Charly",a:"Configuration YouTube Live — lier Zoom à la chaîne YouTube"},
+  {id:10,t:"08:15",s:"08:10 — Pré-événement",d:"Charly",a:"Test Salle VIP — vérifier accès et paramètres"},
+  {id:11,t:"08:20",s:"08:10 — Pré-événement",d:"Charly",a:"Test Salle Support technique"},
+  {id:12,t:"08:20",s:"08:10 — Pré-événement",d:"Charly",a:"Test Salle H — vérifier accès facilitateur"},
+  {id:13,t:"08:25",s:"08:10 — Pré-événement",d:"Charly",a:"Test salles A, B, C, D — vérifier accès facilitateurs"},
+  {id:14,t:"08:25",s:"08:10 — Pré-événement",d:"Charly",a:"Chargement et test de toutes les affiches Zoom (21 affiches PNG)"},
+  {id:15,t:"08:25",s:"08:10 — Pré-événement",d:"Charly",a:"Test stream YouTube Live — vérification qualité vidéo et audio"},
+  // ── 08:30 — TOUT EST EN PLACE ─────────────────────────────
+  {id:16,t:"08:30",s:"08:10 — Pré-événement",d:"Shamir",a:"Vérification — toutes les salles Zoom sont configurées et opérationnelles"},
+  {id:17,t:"08:30",s:"08:10 — Pré-événement",d:"Charly",a:"Confirmation à Guy — infrastructure technique prête"},
+  // ── 08:45 — TOUS LES RESPONSABLES À LEURS POSTES ─────────
+  {id:18,t:"08:45",s:"08:10 — Pré-événement",d:"Agnès", a:"Agnès à son poste — prête pour l'animation"},
+  {id:19,t:"08:45",s:"08:10 — Pré-événement",d:"Claude",a:"Claude à son poste — prêt pour la co-animation P3"},
+  {id:20,t:"08:45",s:"08:10 — Pré-événement",d:"Shamir",a:"Shamir à son poste — outil de suivi ouvert, prêt à superviser"},
+  {id:21,t:"08:45",s:"08:10 — Pré-événement",d:"Raissa",a:"Raissa à son poste — prête pour la supervision participants"},
+  {id:22,t:"08:45",s:"08:10 — Pré-événement",d:"Guy",   a:"Validation finale — tous les responsables sont à leurs postes et prêts"},
+  {id:23,t:"08:45",s:"08:10 — Pré-événement",d:"Guy",   a:"Briefing final équipe centrale — rappel des signaux, des exceptions et des décisions GO/STOP"},
+  {id:24,t:"08:50",s:"08:10 — Pré-événement",d:"Charly",a:"Test audio/vidéo équipe centrale — vérification son et caméra de chaque membre"},
+  {id:25,t:"08:55",s:"08:10 — Pré-événement",d:"Shamir",a:"Vérification globale finale — GO ou STOP (décision Guy)"},
+  // ── 09:00 — DÉBUT DE L'ACCUEIL ───────────────────────────
+  {id:25,t:"09:00",s:"09:00 — Accueil",d:"Shamir",a:"Affichage écran Zoom — positionnement dans le programme (VOUS ÊTES ICI — Accueil)"},
+  {id:26,t:"09:00",s:"09:00 — Accueil",d:"Charly",a:"Ouverture salle principale + Salle H"},
+  {id:27,t:"09:00",s:"09:00 — Accueil",d:"Shamir",a:"Affichage écran Zoom — message d'accueil général"},
+  {id:28,t:"09:00",s:"09:00 — Accueil",d:"Shamir",a:"Affichage écran Zoom — consignes techniques"},
+  {id:29,t:"09:00",s:"09:00 — Accueil",d:"Charly",a:"Ouverture Salle VIP — accueil des premiers VIP"},
+  {id:30,t:"09:00",s:"09:00 — Accueil",d:"Charly",a:"Lancement stream YouTube Live — mode test"},
+  {id:31,t:"09:00",s:"09:00 — Accueil",d:"Guy",   a:"Accueil des premiers panélistes et invités en Salle VIP"},
+  {id:32,t:"09:20",s:"09:00 — Accueil",d:"Shamir",a:"Affichage écran Zoom — programme du salon"},
+  {id:33,t:"09:20",s:"09:00 — Accueil",d:"Shamir",a:"Affichage écran Zoom — intervenants VIP confirmés"},
+  {id:34,t:"09:20",s:"09:00 — Accueil",d:"Shamir",a:"Affichage écran Zoom — compte à rebours + invitation salle principale"},
+  {id:35,t:"09:20",s:"09:00 — Accueil",d:"Charly",a:"Check-in panélistes en Salle VIP — test connexion Zoom"},
+  {id:36,t:"09:30",s:"09:00 — Accueil",d:"Guy",   a:"Briefing final équipe centrale"},
+  {id:37,t:"09:40",s:"09:00 — Accueil",d:"Shamir",a:"Affichage écran Zoom — compte à rebours 20 min avant le début"},
+  {id:38,t:"09:40",s:"09:00 — Accueil",d:"Charly",a:"Migration Zoom panélistes A-D : VIP → salles thématiques"},
+  {id:39,t:"09:45",s:"09:00 — Accueil",d:"Raissa",a:"Vérification présence superviseurs géographiques"},
+  {id:40,t:"09:55",s:"09:00 — Accueil",d:"Charly",a:"Migration Zoom — tous les intervenants VIP → salle principale"},
+  {id:41,t:"09:55",s:"09:00 — Accueil",d:"Guy",   a:"Accompagnement — tous les intervenants VIP → salle principale"},
+  {id:42,t:"09:55",s:"09:00 — Accueil",d:"Shamir",a:"Affichage écran Zoom — compte à rebours 5 min avant le début — rejoindre salle principale"},
+  {id:43,t:"09:55",s:"09:00 — Accueil",d:"Shamir",a:"Vérification globale — tout est prêt pour le démarrage"},
+  // ── PARTIE 1 ──────────────────────────────────────────────
+  {id:44,t:"10:00",s:"10:00 — Partie 1 — Introduction",d:"Shamir",a:"Affichage écran Zoom — positionnement dans le programme (VOUS ÊTES ICI — Partie 1)"},
+  {id:45,t:"10:00",s:"10:00 — Partie 1 — Introduction",d:"Charly",a:"Passage YouTube Live en mode PUBLIC"},
+  {id:46,t:"10:05",s:"10:00 — Partie 1 — Introduction",d:"Agnès", a:"⭐ Mot de bienvenue — Agnès Pangou (7 min — 10:05 à 10:12)"},
+  {id:47,t:"10:12",s:"10:00 — Partie 1 — Introduction",d:"Guy",   a:"Escorte Ministre : Salle VIP → salle principale"},
+  {id:48,t:"10:12",s:"10:00 — Partie 1 — Introduction",d:"Charly",a:"Migration Zoom — Ministre : Salle VIP → salle principale"},
+  {id:49,t:"10:12",s:"10:00 — Partie 1 — Introduction",d:"Shamir",a:"Affichage écran Zoom — portrait du Ministre du Pétrole et du Gaz"},
+  {id:50,t:"10:12",s:"10:00 — Partie 1 — Introduction",d:"Agnès", a:"Introduction et présentation du Ministre"},
+  {id:51,t:"10:12",s:"10:00 — Partie 1 — Introduction",d:"Ministre",a:"⭐ Mot de lancement officiel — Ministre du Pétrole et du Gaz (5 min — 10:12 à 10:17)"},
+  {id:511,t:"10:17",s:"10:00 — Partie 1 — Introduction",d:"Guy",   a:"Escorte Ministre : salle principale → Salle VIP (après intervention)"},
+  {id:512,t:"10:17",s:"10:00 — Partie 1 — Introduction",d:"Charly",a:"Migration Zoom — Ministre : salle principale → Salle VIP"},
+  {id:513,t:"10:17",s:"10:00 — Partie 1 — Introduction",d:"Guy",   a:"Escorte Okouma : Salle VIP → salle principale"},
+  {id:514,t:"10:17",s:"10:00 — Partie 1 — Introduction",d:"Charly",a:"Migration Zoom — Okouma : Salle VIP → salle principale"},
+  {id:515,t:"10:17",s:"10:00 — Partie 1 — Introduction",d:"Shamir",a:"Affichage écran Zoom — portrait de M. Viannet Okouma, Administrateur Directeur Général — Vaalco Energy"},
+  {id:516,t:"10:17",s:"10:00 — Partie 1 — Introduction",d:"Agnès", a:"Introduction et présentation de M. Viannet Okouma"},
+  {id:517,t:"10:17",s:"10:00 — Partie 1 — Introduction",d:"Okouma",a:"⭐ Mot de circonstance — M. Viannet Okouma, Administrateur Directeur Général Vaalco Energy (10 min — 10:17 à 10:27)"},
+  {id:52,t:"10:27",s:"10:00 — Partie 1 — Introduction",d:"Guy",   a:"Escorte Okouma : salle principale → Salle VIP (après intervention)"},
+  {id:53,t:"10:27",s:"10:00 — Partie 1 — Introduction",d:"Charly",a:"Migration Zoom — Okouma → Salle VIP"},
+  {id:54,t:"10:27",s:"10:00 — Partie 1 — Introduction",d:"Shamir",a:"Affichage écran Zoom — présentation des 4 salles thématiques avec panélistes"},
+  {id:541,t:"10:27",s:"10:00 — Partie 1 — Introduction",d:"Charly",a:"Envoi affiches PNG salles A-D aux facilitateurs — demande de partage écran Zoom"},
+  {id:55,t:"10:35",s:"10:00 — Partie 1 — Introduction",d:"Agnès", a:"Instructions logistiques & annonce navigation vers salles A-D"},
+  // ── PARTIE 2 ──────────────────────────────────────────────
+  {id:55b,t:"10:40",s:"10:50 — Partie 2 — Sessions thématiques",d:"Charly",a:"Migration Zoom — panélistes et facilitateurs salles A-D : Salle VIP → salles thématiques (10 min avant — supervision Charly)"},
+  {id:55c,t:"10:40",s:"10:50 — Partie 2 — Sessions thématiques",d:"Guy",a:"Accompagnement panélistes salles A-D : Salle VIP → salles thématiques (10 min avant le début)"},
+  {id:55d,t:"10:40",s:"10:50 — Partie 2 — Sessions thématiques",d:"Charly",a:"Vérification — chaque facilitateur est dans sa salle et prêt (A, B, C, D)"},
+  {id:56,t:"10:50",s:"10:50 — Partie 2 — Sessions thématiques",d:"Shamir",a:"Affichage écran Zoom — positionnement dans le programme (VOUS ÊTES ICI — Partie 2)"},
+  {id:57,t:"10:50",s:"10:50 — Partie 2 — Sessions thématiques",d:"Agnès", a:"Lancement simultané salles A, B, C, D"},
+  {id:58,t:"10:50",s:"10:50 — Partie 2 — Sessions thématiques",d:"Facilitateur A",a:"[Salle A] Affichage affiche Salle A — Exploration, Géosciences et Sous-sol"},
+  {id:59,t:"10:50",s:"10:50 — Partie 2 — Sessions thématiques",d:"Facilitateur B",a:"[Salle B] Affichage affiche Salle B — Forage, Production et Maintenance"},
+  {id:60,t:"10:50",s:"10:50 — Partie 2 — Sessions thématiques",d:"Facilitateur C",a:"[Salle C] Affichage affiche Salle C — QHSE et Logistique"},
+  {id:61,t:"10:50",s:"10:50 — Partie 2 — Sessions thématiques",d:"Facilitateur D",a:"[Salle D] Affichage affiche Salle D — Management et Fonctions Supports"},
+  // ── TRANSITION 2→3 ────────────────────────────────────────
+  {id:62,t:"12:20",s:"12:20 — Transition 2→3",d:"Charly",a:"Migration Zoom — panélistes et facilitateurs P3 : Salle VIP → salle principale (10 min avant — supervision Charly)"},
+  {id:621,t:"12:20",s:"12:20 — Transition 2→3",d:"Guy",a:"Accompagnement panélistes P3 : Salle VIP → salle principale (10 min avant le début)"},
+  {id:622,t:"12:20",s:"12:20 — Transition 2→3",d:"Charly",a:"Vérification — tous les panélistes et facilitateurs P3 sont en salle principale et prêts"},
+  {id:63,t:"12:20",s:"12:20 — Transition 2→3",d:"Shamir",a:"Vérification — tous les panélistes, facilitateurs et modérateurs P3 en salle principale"},
+  // ── PARTIE 3 ──────────────────────────────────────────────
+  {id:64,t:"12:25",s:"12:30 — Partie 3 — Salle principale + Salle H",d:"Shamir",a:"Affichage écran Zoom — positionnement dans le programme (VOUS ÊTES ICI — Partie 3)"},
+  {id:65,t:"12:25",s:"12:30 — Partie 3 — Salle principale + Salle H",d:"Shamir",a:"Affichage écran Zoom — programme Partie 3 : 4 séquences de 15 min en salle principale"},
+  {id:66,t:"12:25",s:"12:30 — Partie 3 — Salle principale + Salle H",d:"Charly",a:"Ouverture Salle H — réouverture pour les participants (Découverte des métiers)"},
+  {id:661,t:"12:25",s:"12:30 — Partie 3 — Salle principale + Salle H",d:"Shamir",a:"Affichage écran Zoom — panélistes de la Partie 3"},
+  {id:67,t:"12:30",s:"12:30 — Partie 3 — Salle principale + Salle H",d:"Claude",a:"Claude prend le rôle de Host — introduction et objectifs de la Partie 3"},
+  {id:68,t:"12:30",s:"12:30 — Partie 3 — Salle principale + Salle H",d:"Panéliste Stage",a:"⭐ Séquence 1 — Stage : présentation et Q&A (15 min — 12:30 à 12:45)"},
+  {id:69,t:"12:45",s:"12:30 — Partie 3 — Salle principale + Salle H",d:"Claude",a:"Transition — clôture Séquence 1 Stage, introduction Séquence 2 Conseil d'orientation"},
+  {id:70,t:"12:45",s:"12:30 — Partie 3 — Salle principale + Salle H",d:"Panéliste Orientation",a:"⭐ Séquence 2 — Conseil d'orientation : présentation et Q&A (15 min — 12:45 à 13:00)"},
+  {id:71,t:"13:00",s:"12:30 — Partie 3 — Salle principale + Salle H",d:"Claude",a:"Transition — clôture Séquence 2 Orientation, introduction Séquence 3 Bourses"},
+  {id:72,t:"13:00",s:"12:30 — Partie 3 — Salle principale + Salle H",d:"Panéliste Bourses",a:"⭐ Séquence 3 — Bourses : présentation et Q&A (15 min — 13:00 à 13:15)"},
+  {id:73,t:"13:15",s:"12:30 — Partie 3 — Salle principale + Salle H",d:"Claude",a:"Transition — clôture Séquence 3 Bourses, introduction Séquence 4 Mentoring"},
+  {id:74,t:"13:15",s:"12:30 — Partie 3 — Salle principale + Salle H",d:"Panéliste Mentoring",a:"⭐ Séquence 4 — Mentoring & Coaching : présentation et Q&A (15 min — 13:15 à 13:30)"},
+  {id:75,t:"13:30",s:"12:30 — Partie 3 — Salle principale + Salle H",d:"Claude",a:"Claude clôture la Partie 3 et repasse la main à Agnès"},
+  {id:76,t:"13:30",s:"12:30 — Partie 3 — Salle principale + Salle H",d:"Agnès", a:"Agnès reprend le rôle de Host — annonce transition vers la Partie 4"},
+  {id:77,t:"13:30",s:"12:30 — Partie 3 — Salle principale + Salle H",d:"Guy",   a:"Retour Salle VIP — panélistes P3 (après intervention)"},
+  {id:78,t:"13:30",s:"12:30 — Partie 3 — Salle principale + Salle H",d:"Charly",a:"Migration Zoom — panélistes P3 vers Salle VIP"},
+  // ── PARTIE 4 ──────────────────────────────────────────────
+  {id:76,t:"13:40",s:"13:40 — Partie 4 — Clôture",d:"Shamir",a:"Affichage écran Zoom — positionnement dans le programme (VOUS ÊTES ICI — Partie 4)"},
+  {id:77,t:"13:40",s:"13:40 — Partie 4 — Clôture",d:"Agnès", a:"Annonce de la partie finale du salon aux participants"},
+  {id:78,t:"13:42",s:"13:40 — Partie 4 — Clôture",d:"Shamir",a:"Affichage écran Zoom — portrait de Guy Kassa Koumba"},
+  {id:79,t:"13:42",s:"13:40 — Partie 4 — Clôture",d:"Guy",   a:"⭐ Bilan de la journée et conseils — Guy Kassa Koumba"},
+  {id:80,t:"13:42",s:"13:40 — Partie 4 — Clôture",d:"Agnès", a:"Vérification présence DG Contenu Local en Salle VIP (pendant bilan Guy)"},
+  {id:81,t:"13:50",s:"13:40 — Partie 4 — Clôture",d:"Agnès", a:"Accompagnement DG Contenu Local : Salle VIP → salle principale"},
+  {id:82,t:"13:50",s:"13:40 — Partie 4 — Clôture",d:"Charly",a:"Migration Zoom DG Contenu Local : Salle VIP → salle principale"},
+  {id:83,t:"13:52",s:"13:40 — Partie 4 — Clôture",d:"DG Contenu Local",a:"⭐ Mot de clôture officielle — Directeur Général du Contenu Local"},
+  {id:84,t:"13:57",s:"13:40 — Partie 4 — Clôture",d:"Guy",   a:"Accompagnement DG Contenu Local : salle principale → Salle VIP (au revoir)"},
+  {id:85,t:"13:57",s:"13:40 — Partie 4 — Clôture",d:"Charly",a:"Migration Zoom DG Contenu Local : salle principale → Salle VIP"},
+  {id:86,t:"13:57",s:"13:40 — Partie 4 — Clôture",d:"Agnès", a:"⭐ Mots de la fin — Agnès Pangou"},
+  {id:87,t:"13:57",s:"13:40 — Partie 4 — Clôture",d:"Shamir",a:"Diffusion écran Zoom — vidéo défilé des noms des organisateurs et facilitateurs"},
+  // ── FERMETURE ─────────────────────────────────────────────
+  {id:88,t:"13:55",s:"13:55 — Fermeture",d:"Guy",   a:"Retour Salle VIP — tous les VIP (échanges finaux & au revoir)"},
+  {id:89,t:"13:55",s:"13:55 — Fermeture",d:"Raissa",a:"Suivi final des participants"},
+  {id:90,t:"14:00",s:"13:55 — Fermeture",d:"Charly",a:"Arrêt stream YouTube + message de fin"},
+  {id:91,t:"14:00",s:"13:55 — Fermeture",d:"Charly",a:"Fermeture technique toutes les salles Zoom"},
+  {id:92,t:"14:05",s:"13:55 — Fermeture",d:"Shamir",a:"Transmission du conducteur complété pour bilan"},
+  {id:93,t:"14:05",s:"13:55 — Fermeture",d:"Guy",   a:"Debriefing équipe centrale"},
 ];
 
 const MB=[
@@ -257,7 +304,7 @@ const MB=[
   {id:"raissa",name:"Raissa",role:"Supervision participants", bg:"#F3E8FF",tc:"#6B21A8",in:"RA"},
   {id:"shamir",name:"Shamir",role:"Régisseur",               bg:"#FEF3E7",tc:"#92400E",in:"SH"},
 ];
-const DC={Agnes:"#9D174D",Charly:"#166534",Claude:"#1E40AF",Guy:"#D97706",Raissa:"#6B21A8",Shamir:"#92400E"};
+const DC={Agnes:"#9D174D",Charly:"#166534",Claude:"#1E40AF",Guy:"#D97706",Raissa:"#6B21A8",Shamir:"#92400E","DG Contenu Local":"#1B3A6B","Facilitateur A":"#0369A1","Facilitateur B":"#0369A1","Facilitateur C":"#0369A1","Facilitateur D":"#0369A1","Panéliste(s) Stage":"#374151","Panéliste(s) Orientation":"#374151","Panéliste(s) Bourses":"#374151"};
 
 // ── ÉTAT ──────────────────────────────────────────────────────
 let me=null,auto=false,ck=null,syncInt=null;
@@ -481,7 +528,7 @@ function render(){
     else if(st==="late")byD[a.d].late++;
     else if(st==="pending")byD[a.d].pend++;
   });
-  const mains=["Charly","Agnès","Guy","Claude","Raissa","Shamir"];
+  const mains=["Charly","Agnès","Guy","Claude","Raissa","Shamir","Facilitateur A","Facilitateur B","Facilitateur C","Facilitateur D"];
   document.getElementById("chips").innerHTML=mains.filter(k=>byD[k]).map(k=>{
     const v=byD[k];
     const col=v.late>0?"#991B1B":v.pend>0?"#854D0E":v.ok===v.tot?"#166534":"#6B7280";
